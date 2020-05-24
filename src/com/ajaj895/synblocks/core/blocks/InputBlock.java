@@ -23,13 +23,17 @@ public class InputBlock extends Block {
         
     }
     
-    public InputBlock(JTextField txtField, String val, JLabel lab, int ty, int x, int y){
+    public InputBlock(JTextField txtField, String val, JLabel lab, int ty, int leftX, int rightX, int topY, int botY){
         setTxtField(txtField);
         setVal(val);
         setLab(lab);
         setType(ty);
-        setX(x);
-        setY(y);
+        /*
+        setLeftX(leftX);
+        setRightX(rightX);
+        setTopY(topY);
+        setBotY(botY);
+        */
     }
     
     private JTextField setTxtField(JTextField newTxt){

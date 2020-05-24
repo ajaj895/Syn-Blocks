@@ -5,6 +5,13 @@
  */
 package com.ajaj895.synblocks.gui;
 
+import com.ajaj895.synblocks.core.blocks.Block; 
+import java.awt.Component;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.TransferHandler;
+
 /**
  *
  * @author Evan
@@ -16,6 +23,39 @@ public class Gui extends javax.swing.JFrame {
      */
     public Gui() {
         initComponents();
+        
+        setTitle("Syn-Blocks | Syntax Learning Tool");//Window title
+        
+        //Block testBlock = new Block(curlyBracLabel.getText(), curlyBracLabel, 0, curlyBracLabel.getX(), curlyBracLabel.getX(), curlyBracLabel.getY(), curlyBracLabel.getY());//TESTING
+        
+        //classNameField.setDragEnabled(true);//Sets drag and drop
+        //curlyBracLabel.setTransferHandler(new TransferHandler("text"));// I am citing this website for helping me through this solution http://zetcode.com/tutorials/javaswingtutorial/draganddrop/
+        publicClass.setDragEnabled(true);
+        
+        // ### DRAG ENABLE LOGIC FOR ALL TABS OF THE TABBED PANE ###
+        for( Component com : baseTab.getComponents()){//Goes through each tab of the tabbed pane
+            if(com.getClass().equals(basicTab.getClass())){//Tests for JPanel Class 
+                JPanel temp = (JPanel)com;
+                for( Component txtFields : temp.getComponents()){
+                    if(txtFields.getClass().equals(classNameField.getClass())){
+                        JTextField txtTemp = (JTextField)txtFields;
+                        txtTemp.setDragEnabled(true);
+                    }
+                }
+            }
+        }
+        
+        // ### DROP ENABLE LOGIC FOR THE CODING PANEL ###
+        for( Component com : codingPanel.getComponents()){//For the coding panel
+            if(com.getClass().equals(mainLabel.getClass())){//Tests for JLabel class
+                System.out.println("True");//for testing purposes
+                JLabel temp = (JLabel)com;
+                temp.setTransferHandler(new TransferHandler("Text")); 
+            }
+        }
+        //classLabel.setTransferHandler(new TransferHandler("text"));
+        
+        //addMouseListener(testBlock);
     }
 
     /**
@@ -28,16 +68,40 @@ public class Gui extends javax.swing.JFrame {
     private void initComponents() {
 
         workFrame = new javax.swing.JScrollPane();
+        codingPanel = new javax.swing.JPanel();
+        mainLabel = new javax.swing.JLabel();
+        classLabel = new javax.swing.JLabel();
+        classLabel2 = new javax.swing.JLabel();
+        classLabel1 = new javax.swing.JLabel();
+        mainLabel1 = new javax.swing.JLabel();
+        classLabel3 = new javax.swing.JLabel();
+        classLabel4 = new javax.swing.JLabel();
+        classLabel5 = new javax.swing.JLabel();
+        classLabel6 = new javax.swing.JLabel();
+        classLabel7 = new javax.swing.JLabel();
+        classLabel8 = new javax.swing.JLabel();
+        classLabel9 = new javax.swing.JLabel();
+        classLabel10 = new javax.swing.JLabel();
+        classLabel11 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         langList = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         baseTab = new javax.swing.JTabbedPane();
         basicTab = new javax.swing.JPanel();
-        curlyBracLabel = new javax.swing.JLabel();
-        classLabel = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         classNameField = new javax.swing.JTextField();
+        pubStatVoidMain = new javax.swing.JTextField();
+        publicClass = new javax.swing.JTextField();
+        stringArgs = new javax.swing.JTextField();
+        openCurly = new javax.swing.JTextField();
+        closeCurly = new javax.swing.JTextField();
+        systemLabel = new javax.swing.JTextField();
+        outLabel = new javax.swing.JTextField();
+        printLabel = new javax.swing.JTextField();
+        openParenth = new javax.swing.JTextField();
+        closeParenth = new javax.swing.JTextField();
+        semicolon = new javax.swing.JTextField();
+        semicolon1 = new javax.swing.JTextField();
         loopTab = new javax.swing.JPanel();
         logicTab = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -50,6 +114,130 @@ public class Gui extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        mainLabel.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
+        mainLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        classLabel.setText(" ");
+        classLabel.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
+        classLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        classLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        classLabel2.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
+        classLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        classLabel1.setText(" ");
+        classLabel1.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
+        classLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        classLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        mainLabel1.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
+        mainLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        classLabel3.setText(" ");
+        classLabel3.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
+        classLabel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        classLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        classLabel4.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
+        classLabel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        classLabel5.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
+        classLabel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        classLabel6.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
+        classLabel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        classLabel7.setText(" ");
+        classLabel7.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
+        classLabel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        classLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        classLabel8.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
+        classLabel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        classLabel9.setText(" ");
+        classLabel9.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
+        classLabel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        classLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        classLabel10.setText(" ");
+        classLabel10.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
+        classLabel10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        classLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        classLabel11.setText(" ");
+        classLabel11.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
+        classLabel11.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        classLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        javax.swing.GroupLayout codingPanelLayout = new javax.swing.GroupLayout(codingPanel);
+        codingPanel.setLayout(codingPanelLayout);
+        codingPanelLayout.setHorizontalGroup(
+            codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(codingPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(codingPanelLayout.createSequentialGroup()
+                        .addGroup(codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(mainLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(codingPanelLayout.createSequentialGroup()
+                                .addComponent(classLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(classLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(classLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(mainLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(classLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(codingPanelLayout.createSequentialGroup()
+                        .addComponent(classLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(classLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(classLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(classLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(classLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(classLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(classLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(classLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(197, Short.MAX_VALUE))
+        );
+        codingPanelLayout.setVerticalGroup(
+            codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(codingPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(classLabel3)
+                    .addComponent(mainLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(codingPanelLayout.createSequentialGroup()
+                        .addGroup(codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(classLabel)
+                            .addComponent(classLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(classLabel1))
+                        .addGap(18, 18, 18)
+                        .addComponent(mainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(classLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(classLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(classLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(classLabel7)
+                    .addComponent(classLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(classLabel9)
+                        .addComponent(classLabel10)))
+                .addGap(18, 18, 18)
+                .addComponent(classLabel11)
+                .addContainerGap(299, Short.MAX_VALUE))
+        );
+
+        workFrame.setViewportView(codingPanel);
+
         jLabel1.setText("Syn-Blocks");
 
         jLabel2.setText("A syntax learning tool.");
@@ -61,23 +249,99 @@ public class Gui extends javax.swing.JFrame {
         baseTab.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         baseTab.setRequestFocusEnabled(false);
 
-        curlyBracLabel.setText("{   }");
-        curlyBracLabel.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
-        curlyBracLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        classLabel.setText("Public Class ");
-        classLabel.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
-        classLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        classLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jLabel7.setText("Public Static Void Main()");
-        jLabel7.setToolTipText("Public Static Void Main(). This piece of code is essential for creating the main code of your software. It is the starting program of any Java project. Static has to deal with memory management. Void means that the program will not return anything to whatever called main(). ");
-        jLabel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
         classNameField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         classNameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 classNameFieldActionPerformed(evt);
+            }
+        });
+
+        pubStatVoidMain.setEditable(false);
+        pubStatVoidMain.setText("public static void main");
+        pubStatVoidMain.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        publicClass.setEditable(false);
+        publicClass.setText("public class ");
+        publicClass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        stringArgs.setEditable(false);
+        stringArgs.setText("(String[ ] args)");
+        stringArgs.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        openCurly.setEditable(false);
+        openCurly.setText("{");
+        openCurly.setToolTipText("Open curly brace. DON'T FORGET TO CLOSE THE BRACE BY GIVING THIS BRACE A FRIEND :)");
+        openCurly.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        openCurly.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openCurlyActionPerformed(evt);
+            }
+        });
+
+        closeCurly.setEditable(false);
+        closeCurly.setText("}");
+        closeCurly.setToolTipText("Closing curly brace. A useful friend for the open curly brace and necessary to close a section of code.");
+        closeCurly.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        closeCurly.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeCurlyActionPerformed(evt);
+            }
+        });
+
+        systemLabel.setEditable(false);
+        systemLabel.setText("System");
+        systemLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        outLabel.setEditable(false);
+        outLabel.setText("out");
+        outLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        outLabel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                outLabelActionPerformed(evt);
+            }
+        });
+
+        printLabel.setEditable(false);
+        printLabel.setText("print");
+        printLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        openParenth.setEditable(false);
+        openParenth.setText("(");
+        openParenth.setToolTipText("Open curly brace. DON'T FORGET TO CLOSE THE BRACE BY GIVING THIS BRACE A FRIEND :)");
+        openParenth.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        openParenth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                openParenthActionPerformed(evt);
+            }
+        });
+
+        closeParenth.setEditable(false);
+        closeParenth.setText(")");
+        closeParenth.setToolTipText("Open curly brace. DON'T FORGET TO CLOSE THE BRACE BY GIVING THIS BRACE A FRIEND :)");
+        closeParenth.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        closeParenth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeParenthActionPerformed(evt);
+            }
+        });
+
+        semicolon.setEditable(false);
+        semicolon.setText(";");
+        semicolon.setToolTipText("Open curly brace. DON'T FORGET TO CLOSE THE BRACE BY GIVING THIS BRACE A FRIEND :)");
+        semicolon.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        semicolon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                semicolonActionPerformed(evt);
+            }
+        });
+
+        semicolon1.setEditable(false);
+        semicolon1.setText(".");
+        semicolon1.setToolTipText("Open curly brace. DON'T FORGET TO CLOSE THE BRACE BY GIVING THIS BRACE A FRIEND :)");
+        semicolon1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        semicolon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                semicolon1ActionPerformed(evt);
             }
         });
 
@@ -88,29 +352,57 @@ public class Gui extends javax.swing.JFrame {
             .addGroup(basicTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(basicTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                    .addComponent(stringArgs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pubStatVoidMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(basicTabLayout.createSequentialGroup()
-                        .addGroup(basicTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(curlyBracLabel)
-                            .addGroup(basicTabLayout.createSequentialGroup()
-                                .addComponent(classLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(classNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(openCurly, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(closeCurly, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(openParenth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(closeParenth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(semicolon1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(semicolon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(basicTabLayout.createSequentialGroup()
+                        .addComponent(publicClass, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(classNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(basicTabLayout.createSequentialGroup()
+                        .addComponent(systemLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(outLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(printLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         basicTabLayout.setVerticalGroup(
             basicTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(basicTabLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(curlyBracLabel)
-                .addGap(18, 18, 18)
+                .addGap(25, 25, 25)
                 .addGroup(basicTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(classLabel)
-                    .addComponent(classNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(openCurly, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(closeCurly, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(openParenth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(closeParenth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(semicolon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(semicolon1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel7)
-                .addContainerGap(303, Short.MAX_VALUE))
+                .addGroup(basicTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(classNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(publicClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pubStatVoidMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(stringArgs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(basicTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(systemLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(printLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(232, Short.MAX_VALUE))
         );
 
         baseTab.addTab("Basics", basicTab);
@@ -119,7 +411,7 @@ public class Gui extends javax.swing.JFrame {
         loopTab.setLayout(loopTabLayout);
         loopTabLayout.setHorizontalGroup(
             loopTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 173, Short.MAX_VALUE)
+            .addGap(0, 205, Short.MAX_VALUE)
         );
         loopTabLayout.setVerticalGroup(
             loopTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,7 +424,7 @@ public class Gui extends javax.swing.JFrame {
         logicTab.setLayout(logicTabLayout);
         logicTabLayout.setHorizontalGroup(
             logicTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 173, Short.MAX_VALUE)
+            .addGap(0, 205, Short.MAX_VALUE)
         );
         logicTabLayout.setVerticalGroup(
             logicTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,11 +462,12 @@ public class Gui extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
-                        .addComponent(jLabel4))
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(baseTab, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addComponent(baseTab)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -207,7 +500,7 @@ public class Gui extends javax.swing.JFrame {
                     .addComponent(langList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(baseTab)
+                    .addComponent(baseTab, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(workFrame))
                 .addContainerGap())
         );
@@ -218,6 +511,34 @@ public class Gui extends javax.swing.JFrame {
     private void classNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classNameFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_classNameFieldActionPerformed
+
+    private void closeCurlyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeCurlyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_closeCurlyActionPerformed
+
+    private void openCurlyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openCurlyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_openCurlyActionPerformed
+
+    private void outLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outLabelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_outLabelActionPerformed
+
+    private void openParenthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openParenthActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_openParenthActionPerformed
+
+    private void closeParenthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeParenthActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_closeParenthActionPerformed
+
+    private void semicolonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_semicolonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_semicolonActionPerformed
+
+    private void semicolon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_semicolon1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_semicolon1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -250,32 +571,60 @@ public class Gui extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Gui().setVisible(true);
+                
             }
         });
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane baseTab;
     private javax.swing.JPanel basicTab;
     private javax.swing.JLabel classLabel;
+    private javax.swing.JLabel classLabel1;
+    private javax.swing.JLabel classLabel10;
+    private javax.swing.JLabel classLabel11;
+    private javax.swing.JLabel classLabel2;
+    private javax.swing.JLabel classLabel3;
+    private javax.swing.JLabel classLabel4;
+    private javax.swing.JLabel classLabel5;
+    private javax.swing.JLabel classLabel6;
+    private javax.swing.JLabel classLabel7;
+    private javax.swing.JLabel classLabel8;
+    private javax.swing.JLabel classLabel9;
     private javax.swing.JTextField classNameField;
-    private javax.swing.JLabel curlyBracLabel;
+    private javax.swing.JTextField closeCurly;
+    private javax.swing.JTextField closeParenth;
+    private javax.swing.JPanel codingPanel;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JComboBox<String> langList;
     private javax.swing.JPanel logicTab;
     private javax.swing.JPanel loopTab;
+    private javax.swing.JLabel mainLabel;
+    private javax.swing.JLabel mainLabel1;
+    private javax.swing.JTextField openCurly;
+    private javax.swing.JTextField openParenth;
     private javax.swing.JMenu optionsMenu;
+    private javax.swing.JTextField outLabel;
+    private javax.swing.JTextField printLabel;
+    private javax.swing.JTextField pubStatVoidMain;
+    private javax.swing.JTextField publicClass;
+    private javax.swing.JTextField semicolon;
+    private javax.swing.JTextField semicolon1;
+    private javax.swing.JTextField stringArgs;
+    private javax.swing.JTextField systemLabel;
     private javax.swing.JScrollPane workFrame;
     // End of variables declaration//GEN-END:variables
+
 
     
 }

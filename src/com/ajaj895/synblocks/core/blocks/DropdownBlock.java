@@ -22,13 +22,17 @@ public class DropdownBlock extends Block {
         
     }
     
-    public DropdownBlock(JComboBox<String> drop, String val, JLabel lab, int ty, int x, int y){
+    public DropdownBlock(JComboBox<String> drop, String val, JLabel lab, int ty, int leftX, int rightX, int topY, int botY){
         
         setVal(val);
         setLab(lab);
         setType(ty);
-        setX(x);
-        setY(y);
+        /*
+        setLeftX(leftX);
+        setRightX(rightX);
+        setTopY(topY);
+        setBotY(botY);
+        */
     }
     
     private JComboBox<String> setDropdown(JComboBox<String> newCombo){

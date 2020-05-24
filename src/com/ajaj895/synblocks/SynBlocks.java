@@ -15,10 +15,8 @@ public class SynBlocks {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("This is a test");//for testing purposes
         Gui gui = new Gui();//creates the GUI object.
-        gui.setVisible(true);//makes the GUI visable.
-        
+        gui.setVisible(true);//makes the GUI visable. 
     }
     
 }

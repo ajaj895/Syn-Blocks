@@ -6,6 +6,7 @@
 package com.ajaj895.synblocks.gui;
 
 import com.ajaj895.synblocks.core.blocks.Block; 
+import com.ajaj895.synblocks.core.FileHandler;
 import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,6 +22,11 @@ public class Gui extends javax.swing.JFrame {
     /**
      * Creates new form Gui
      */
+    
+    String code = "";
+    int selLang = 0;//0 = Java, 1 = Python
+    FileHandler fh = new FileHandler();
+    
     public Gui() {
         initComponents();
         
@@ -29,7 +35,7 @@ public class Gui extends javax.swing.JFrame {
         //Block testBlock = new Block(curlyBracLabel.getText(), curlyBracLabel, 0, curlyBracLabel.getX(), curlyBracLabel.getX(), curlyBracLabel.getY(), curlyBracLabel.getY());//TESTING
         
         //classNameField.setDragEnabled(true);//Sets drag and drop
-        //curlyBracLabel.setTransferHandler(new TransferHandler("text"));// I am citing this website for helping me through this solution http://zetcode.com/tutorials/javaswingtutorial/draganddrop/
+        //curlyBracLabel.setTransferHandler(new TransferHandler("text"));// I am citing this website for inspiring me with this solution http://zetcode.com/tutorials/javaswingtutorial/draganddrop/ for the drag and drop technique.
         publicClass.setDragEnabled(true);
         
         // ### DRAG ENABLE LOGIC FOR ALL TABS OF THE TABBED PANE ###
@@ -47,17 +53,12 @@ public class Gui extends javax.swing.JFrame {
         
         // ### DROP ENABLE LOGIC FOR THE CODING PANEL ###
         for( Component com : codingPanel.getComponents()){//For the coding panel
-            //System.out.println(com.getClass());
-            if(com.getClass().equals(mainLabel.getClass())){//Tests for JLabel class
-                //System.out.println("True");//for testing purposes
-                //System.out.println(com.getName());
+            if(com.getClass().equals(label8.getClass())){//Tests for JLabel class
                 JLabel temp = (JLabel)com;
                 temp.setTransferHandler(new TransferHandler("text")); 
             }
         }
-        //classLabel.setTransferHandler(new TransferHandler("text"));
         
-        //addMouseListener(testBlock);
     }
 
     /**
@@ -71,23 +72,23 @@ public class Gui extends javax.swing.JFrame {
 
         workFrame = new javax.swing.JScrollPane();
         codingPanel = new javax.swing.JPanel();
-        mainLabel = new javax.swing.JLabel();
-        classLabel = new javax.swing.JLabel();
-        classLabel2 = new javax.swing.JLabel();
-        classLabel1 = new javax.swing.JLabel();
-        mainLabel1 = new javax.swing.JLabel();
-        classLabel3 = new javax.swing.JLabel();
-        classLabel4 = new javax.swing.JLabel();
-        classLabel5 = new javax.swing.JLabel();
-        classLabel6 = new javax.swing.JLabel();
-        classLabel7 = new javax.swing.JLabel();
-        classLabel9 = new javax.swing.JLabel();
-        classLabel10 = new javax.swing.JLabel();
-        classLabel11 = new javax.swing.JLabel();
-        classLabel12 = new javax.swing.JLabel();
-        classLabel13 = new javax.swing.JLabel();
-        classLabel14 = new javax.swing.JLabel();
-        classLabel16 = new javax.swing.JLabel();
+        label8 = new javax.swing.JLabel();
+        label4 = new javax.swing.JLabel();
+        label6 = new javax.swing.JLabel();
+        label7 = new javax.swing.JLabel();
+        label9 = new javax.swing.JLabel();
+        label10 = new javax.swing.JLabel();
+        label16 = new javax.swing.JLabel();
+        label3 = new javax.swing.JLabel();
+        label12 = new javax.swing.JLabel();
+        label13 = new javax.swing.JLabel();
+        label1 = new javax.swing.JLabel();
+        label15 = new javax.swing.JLabel();
+        label2 = new javax.swing.JLabel();
+        label14 = new javax.swing.JLabel();
+        label17 = new javax.swing.JLabel();
+        label5 = new javax.swing.JLabel();
+        label11 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         langList = new javax.swing.JComboBox<>();
@@ -112,166 +113,168 @@ public class Gui extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
+        saveButton = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        runButton = new javax.swing.JMenuItem();
+        compileButton = new javax.swing.JMenuItem();
         optionsMenu = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        mainLabel.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
-        mainLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        label8.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
+        label8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        classLabel.setText(" ");
-        classLabel.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
-        classLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        classLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        label4.setText(" ");
+        label4.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
+        label4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        label4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        classLabel2.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
-        classLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        label6.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
+        label6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        classLabel1.setText(" ");
-        classLabel1.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
-        classLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        classLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        label7.setText(" ");
+        label7.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
+        label7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        label7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        mainLabel1.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
-        mainLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        label9.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
+        label9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        classLabel3.setText(" ");
-        classLabel3.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
-        classLabel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        classLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        label10.setText(" ");
+        label10.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
+        label10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        label10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        classLabel4.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
-        classLabel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        label16.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
+        label16.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        classLabel5.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
-        classLabel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        label3.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
+        label3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        classLabel6.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
-        classLabel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        label12.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
+        label12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        classLabel7.setText(" ");
-        classLabel7.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
-        classLabel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        classLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        label13.setText(" ");
+        label13.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
+        label13.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        label13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        classLabel9.setText(" ");
-        classLabel9.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
-        classLabel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        classLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        label1.setText(" ");
+        label1.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
+        label1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        label1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        classLabel10.setText(" ");
-        classLabel10.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
-        classLabel10.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        classLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        label15.setText(" ");
+        label15.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
+        label15.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        label15.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        classLabel11.setText(" ");
-        classLabel11.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
-        classLabel11.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        classLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        label2.setText(" ");
+        label2.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
+        label2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        label2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        classLabel12.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
-        classLabel12.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        label14.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
+        label14.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        classLabel13.setText(" ");
-        classLabel13.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
-        classLabel13.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        classLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        label17.setText(" ");
+        label17.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
+        label17.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        label17.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        classLabel14.setText(" ");
-        classLabel14.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
-        classLabel14.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        classLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        label5.setText(" ");
+        label5.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
+        label5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        label5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        classLabel16.setText(" ");
-        classLabel16.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
-        classLabel16.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        classLabel16.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        label11.setText(" ");
+        label11.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
+        label11.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        label11.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout codingPanelLayout = new javax.swing.GroupLayout(codingPanel);
         codingPanel.setLayout(codingPanelLayout);
         codingPanelLayout.setHorizontalGroup(
             codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(codingPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(codingPanelLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
                         .addGroup(codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(classLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(codingPanelLayout.createSequentialGroup()
-                                    .addGap(26, 26, 26)
-                                    .addComponent(classLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(classLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(classLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(label16, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(codingPanelLayout.createSequentialGroup()
-                                .addComponent(classLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(19, 19, 19)
+                                .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(classLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(classLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, codingPanelLayout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(mainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label11, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label13, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label14, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label15, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(codingPanelLayout.createSequentialGroup()
+                                .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(codingPanelLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
                         .addGroup(codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label17, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(codingPanelLayout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(mainLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(classLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, codingPanelLayout.createSequentialGroup()
+                                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(classLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(classLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(classLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)))
-                        .addGap(15, 15, 15)
-                        .addComponent(classLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(classLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(classLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(classLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(62, Short.MAX_VALUE))
+                                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         codingPanelLayout.setVerticalGroup(
             codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(codingPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(classLabel3)
-                    .addGroup(codingPanelLayout.createSequentialGroup()
-                        .addGroup(codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(classLabel)
-                            .addComponent(classLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(classLabel1))
-                        .addGap(18, 18, 18)
-                        .addComponent(mainLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(mainLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(label1)
+                        .addComponent(label2))
+                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(label4)
+                        .addComponent(label5))
+                    .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(classLabel10)
-                            .addComponent(classLabel7)
-                            .addComponent(classLabel14))
-                        .addComponent(classLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(classLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(classLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(classLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(classLabel13)
-                    .addComponent(classLabel16))
-                .addGap(19, 19, 19)
-                .addComponent(classLabel11)
+                        .addComponent(label15, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(label13, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(label12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(label14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(codingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(label10)
+                        .addComponent(label11))
+                    .addComponent(label9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label7)
+                    .addComponent(label8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addComponent(label16, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(classLabel9)
-                .addContainerGap(265, Short.MAX_VALUE))
+                .addComponent(label17)
+                .addContainerGap(262, Short.MAX_VALUE))
         );
 
         workFrame.setViewportView(codingPanel);
@@ -281,6 +284,11 @@ public class Gui extends javax.swing.JFrame {
         jLabel2.setText("A syntax learning tool.");
 
         langList.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Java", "Python" }));
+        langList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                langListActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Language");
 
@@ -303,7 +311,7 @@ public class Gui extends javax.swing.JFrame {
         publicClass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         stringArgs.setEditable(false);
-        stringArgs.setText("(String[ ] args)");
+        stringArgs.setText("(String[] args)");
         stringArgs.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         openCurly.setEditable(false);
@@ -489,10 +497,29 @@ public class Gui extends javax.swing.JFrame {
         jLabel4.setText("Blocks");
 
         fileMenu.setText("File");
+
+        saveButton.setText("Save");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+        fileMenu.add(saveButton);
+
         jMenuBar1.add(fileMenu);
 
         editMenu.setText("Edit");
         jMenuBar1.add(editMenu);
+
+        jMenu3.setText("Run");
+
+        runButton.setText("Run");
+        jMenu3.add(runButton);
+
+        compileButton.setText("Compile");
+        jMenu3.add(compileButton);
+
+        jMenuBar1.add(jMenu3);
 
         optionsMenu.setText("Options");
         jMenuBar1.add(optionsMenu);
@@ -510,24 +537,22 @@ public class Gui extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(baseTab)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(baseTab)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(212, 212, 212))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addGap(251, 251, 251)))
+                                .addGap(251, 251, 251))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(217, 217, 217)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(langList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -545,10 +570,10 @@ public class Gui extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel4))
-                    .addComponent(langList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(langList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(baseTab, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -591,6 +616,74 @@ public class Gui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_semicolon1ActionPerformed
 
+    private void langListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_langListActionPerformed
+        // TODO add your handling code here:
+        selLang = langList.getSelectedIndex();
+        //System.out.println(selLang);//for testing purposes.
+    }//GEN-LAST:event_langListActionPerformed
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        //Similar logic loop as before but this time to get text from the JLabels
+        int tabage = 0;//Number of tabs
+        //TODO Make this better, this is a bandaid over a bullet hole solution.
+        code += label1.getText();
+        if(label1.getText().equalsIgnoreCase(";") || label1.getText().equalsIgnoreCase("}")) code += "\n"; 
+        if(label1.getText().equalsIgnoreCase("{")) code += "\n";
+        code += label2.getText();
+        if(label2.getText().equalsIgnoreCase(";") || label2.getText().equalsIgnoreCase("}")) code += "\n"; 
+        if(label2.getText().equalsIgnoreCase("{")) code += "\n";
+        code += label3.getText();
+        if(label3.getText().equalsIgnoreCase(";") || label3.getText().equalsIgnoreCase("}")) code += "\n";
+        if(label3.getText().equalsIgnoreCase("{")) code += "\n";
+        code += label4.getText();
+        if(label4.getText().equalsIgnoreCase(";") || label4.getText().equalsIgnoreCase("}")) code += "\n"; 
+        if(label4.getText().equalsIgnoreCase("{")) code += "\n";
+        code += label5.getText();
+        if(label5.getText().equalsIgnoreCase(";") || label5.getText().equalsIgnoreCase("}")) code += "\n";
+        if(label5.getText().equalsIgnoreCase("{")) code += "\n";
+        code += label6.getText();
+        if(label6.getText().equalsIgnoreCase(";") || label6.getText().equalsIgnoreCase("}")) code += "\n";
+        if(label6.getText().equalsIgnoreCase("{")) code += "\n";
+        code += label7.getText();
+        if(label7.getText().equalsIgnoreCase(";") || label7.getText().equalsIgnoreCase("}")) code += "\n";
+        if(label7.getText().equalsIgnoreCase("{")) code += "\n";
+        code += label8.getText();
+        if(label8.getText().equalsIgnoreCase(";") || label8.getText().equalsIgnoreCase("}")) code += "\n";
+        if(label8.getText().equalsIgnoreCase("{")) code += "\n";
+        code += label9.getText();
+        if(label9.getText().equalsIgnoreCase(";") || label9.getText().equalsIgnoreCase("}")) code += "\n";
+        if(label9.getText().equalsIgnoreCase("{")) code += "\n";
+        code += label10.getText();
+        if(label10.getText().equalsIgnoreCase(";") || label10.getText().equalsIgnoreCase("}")) code += "\n";
+        if(label10.getText().equalsIgnoreCase("{")) code += "\n";
+        code += label11.getText();
+        if(label11.getText().equalsIgnoreCase(";") || label11.getText().equalsIgnoreCase("}")) code += "\n";
+        if(label11.getText().equalsIgnoreCase("{")) code += "\n";
+        code += label12.getText();
+        if(label12.getText().equalsIgnoreCase(";") || label12.getText().equalsIgnoreCase("}")) code += "\n"; 
+        if(label12.getText().equalsIgnoreCase("{")) code += "\n";
+        code += label13.getText();
+        if(label13.getText().equalsIgnoreCase(";") || label13.getText().equalsIgnoreCase("}")) code += "\n";
+        if(label13.getText().equalsIgnoreCase("{")) code += "\n";
+        code += label14.getText();
+        if(label14.getText().equalsIgnoreCase(";") || label14.getText().equalsIgnoreCase("}")) code += "\n";
+        if(label14.getText().equalsIgnoreCase("{")) code += "\n";
+        code += label15.getText();
+        if(label15.getText().equalsIgnoreCase(";") || label15.getText().equalsIgnoreCase("}")) code += "\n";
+        if(label15.getText().equalsIgnoreCase("{")) code += "\n";
+        code += label16.getText();
+        if(label16.getText().equalsIgnoreCase(";") || label16.getText().equalsIgnoreCase("}")) code += "\n";
+        if(label6.getText().equalsIgnoreCase("{")) code += "\n";
+        code += label17.getText();
+        if(label17.getText().equalsIgnoreCase(";") || label17.getText().equalsIgnoreCase("}")) code += "\n";
+        if(label17.getText().equalsIgnoreCase("{")) code += "\n";
+        
+        System.out.println(code);//for Testing purposes.
+        
+        fh.saveFile(label2.getText()+".java", code);
+        code = "";//Reseting memory so no double saving of the same data.
+    }//GEN-LAST:event_saveButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -632,25 +725,11 @@ public class Gui extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane baseTab;
     private javax.swing.JPanel basicTab;
-    private javax.swing.JLabel classLabel;
-    private javax.swing.JLabel classLabel1;
-    private javax.swing.JLabel classLabel10;
-    private javax.swing.JLabel classLabel11;
-    private javax.swing.JLabel classLabel12;
-    private javax.swing.JLabel classLabel13;
-    private javax.swing.JLabel classLabel14;
-    private javax.swing.JLabel classLabel16;
-    private javax.swing.JLabel classLabel2;
-    private javax.swing.JLabel classLabel3;
-    private javax.swing.JLabel classLabel4;
-    private javax.swing.JLabel classLabel5;
-    private javax.swing.JLabel classLabel6;
-    private javax.swing.JLabel classLabel7;
-    private javax.swing.JLabel classLabel9;
     private javax.swing.JTextField classNameField;
     private javax.swing.JTextField closeCurly;
     private javax.swing.JTextField closeParenth;
     private javax.swing.JPanel codingPanel;
+    private javax.swing.JMenuItem compileButton;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JLabel jLabel1;
@@ -659,12 +738,28 @@ public class Gui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel label1;
+    private javax.swing.JLabel label10;
+    private javax.swing.JLabel label11;
+    private javax.swing.JLabel label12;
+    private javax.swing.JLabel label13;
+    private javax.swing.JLabel label14;
+    private javax.swing.JLabel label15;
+    private javax.swing.JLabel label16;
+    private javax.swing.JLabel label17;
+    private javax.swing.JLabel label2;
+    private javax.swing.JLabel label3;
+    private javax.swing.JLabel label4;
+    private javax.swing.JLabel label5;
+    private javax.swing.JLabel label6;
+    private javax.swing.JLabel label7;
+    private javax.swing.JLabel label8;
+    private javax.swing.JLabel label9;
     private javax.swing.JComboBox<String> langList;
     private javax.swing.JPanel logicTab;
     private javax.swing.JPanel loopTab;
-    private javax.swing.JLabel mainLabel;
-    private javax.swing.JLabel mainLabel1;
     private javax.swing.JTextField openCurly;
     private javax.swing.JTextField openParenth;
     private javax.swing.JMenu optionsMenu;
@@ -672,6 +767,8 @@ public class Gui extends javax.swing.JFrame {
     private javax.swing.JTextField printLabel;
     private javax.swing.JTextField pubStatVoidMain;
     private javax.swing.JTextField publicClass;
+    private javax.swing.JMenuItem runButton;
+    private javax.swing.JMenuItem saveButton;
     private javax.swing.JTextField semicolon;
     private javax.swing.JTextField semicolon1;
     private javax.swing.JTextField stringArgs;

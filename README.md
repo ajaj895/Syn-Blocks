@@ -24,4 +24,4 @@ To do the drag and drop, make sure you highlight the text before clicking and dr
 
 ![The highlighting of the block of your choice](/images/highlight.png)
 
-![My goals for the project using a mix of Agile and rapid prototyping techniques for the project](/images/starting goals.jpg)
+

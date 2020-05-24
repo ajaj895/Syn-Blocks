@@ -63,14 +63,18 @@ public class Gui extends javax.swing.JFrame {
 
         curlyBracLabel.setText("{   }");
         curlyBracLabel.setToolTipText("Curly braces. The most common form of syntax in Java, used after loops, methods, and class statements.");
+        curlyBracLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         classLabel.setText("Public Class ");
         classLabel.setToolTipText("Public class [name]. This is the base of all Java files, where Public makes it accessable, Class declares that it is a Java file, and the text box is a name of your choice.");
+        classLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         classLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel7.setText("Public Static Void Main()");
         jLabel7.setToolTipText("Public Static Void Main(). This piece of code is essential for creating the main code of your software. It is the starting program of any Java project. Static has to deal with memory management. Void means that the program will not return anything to whatever called main(). ");
+        jLabel7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        classNameField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         classNameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 classNameFieldActionPerformed(evt);
@@ -84,13 +88,16 @@ public class Gui extends javax.swing.JFrame {
             .addGroup(basicTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(basicTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(curlyBracLabel)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                     .addGroup(basicTabLayout.createSequentialGroup()
-                        .addComponent(classLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(classNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addGroup(basicTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(curlyBracLabel)
+                            .addGroup(basicTabLayout.createSequentialGroup()
+                                .addComponent(classLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(classNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         basicTabLayout.setVerticalGroup(
             basicTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +110,7 @@ public class Gui extends javax.swing.JFrame {
                     .addComponent(classNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
-                .addContainerGap(309, Short.MAX_VALUE))
+                .addContainerGap(303, Short.MAX_VALUE))
         );
 
         baseTab.addTab("Basics", basicTab);
